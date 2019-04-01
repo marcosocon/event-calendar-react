@@ -124,7 +124,7 @@ class Selectable extends React.Component {
   constructor(...args) {
     super(...args)
 
-    this.state = { events }
+    this.state = { events: this.props.events }
   }
 
   handleSelect = ({ start, end }) => {
@@ -144,7 +144,6 @@ class Selectable extends React.Component {
 
   render() {
     const localizer = BigCalendar.momentLocalizer(moment) // or globalizeLocalizer
-
     return (
       <>
       <BigCalendar

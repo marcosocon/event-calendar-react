@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import Calendar from './components/Calendar'
+import Calendar from './domains/Calendar/Container'
 import { getStore } from './redux/store'
 import './App.css';
 
