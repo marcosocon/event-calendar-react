@@ -59,18 +59,32 @@ export default class Dnd extends React.Component {
   }
 
   newEvent = (event) => {
-    // let idList = this.state.events.map(a => a.id)
-    // let newId = Math.max(...idList) + 1
-    // let hour = {
-    //   id: newId,
-    //   title: 'New Event',
-    //   allDay: event.slots.length == 1,
-    //   start: event.start,
-    //   end: event.end,
-    // }
-    // this.setState({
-    //   events: this.state.events.concat([hour]),
-    // })
+    const title = window.prompt('New Event name?')
+    if (title) {
+      let idList = this.state.events.map(a => a.id)
+      let newId = Math.max(...idList) + 1
+      let hour = {
+        id: newId,
+        title,
+        allDay: event.slots.length == 1,
+        start: event.start,
+        end: event.end,
+      }
+      this.setState({
+        events: this.state.events.concat([hour]),
+      })
+    }
+  }
+
+  eventStyleGetter = (event, start, end, isSelected) => {
+    console.log(event);
+    const backgroundColor = '#' + event.hexColor;
+    var style = {
+      backgroundColor: backgroundColor,
+    };
+    return {
+      style
+    };
   }
 
   render() {
@@ -85,6 +99,7 @@ export default class Dnd extends React.Component {
           onSelectSlot={this.newEvent}
           defaultView={BigCalendar.Views.MONTH}
           defaultDate={new Date(2019, 3, 12)}
+          eventPropGetter={this.eventStyleGetter}
         />
     )
   }
