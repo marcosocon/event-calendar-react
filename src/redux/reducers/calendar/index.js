@@ -8,8 +8,8 @@ const initialState = {
       id: 0,
       title: 'All Day Event very long title',
       allDay: true,
-      start: new Date(2015, 3, 0),
-      end: new Date(2015, 3, 1),
+      start: new Date(2019, 4, 0),
+      end: new Date(2019, 4, 1),
     }
   ]
 }

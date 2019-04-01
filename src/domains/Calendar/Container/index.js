@@ -7,19 +7,16 @@ import { getEvents } from '../../../redux/actions/calendar'
 class Container extends Component {
   render () {
     const { actions, events } = this.props
-
     const props = {
       actions,
       events
     }
-
     return <Calendar {...props} />
   }
 }
 
 const mapStateToProps = state => {
-  const { events } = state
-
+  const { events } = state.calendar
   return {
     events
   }
