@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Calendar from '../components/Calendar'
-import { getEvents } from '../../../redux/actions/calendar'
+import { getEvents, addEvent, updateEvent, removeEvent } from '../../../redux/actions/calendar'
 
 class Container extends Component {
   render () {
@@ -11,7 +11,11 @@ class Container extends Component {
       actions,
       events
     }
-    return <Calendar {...props} />
+    return (
+      <div >
+        <Calendar {...props} />
+      </div>
+    )
   }
 }
 
@@ -20,16 +24,18 @@ const mapStateToProps = state => {
   return {
     events
   }
-}
+};
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(
-    {
-      getEvents
-    },
+  actions: bindActionCreators({
+    getEvents,
+    addEvent,
+    updateEvent,
+    removeEvent
+  },
     dispatch
   )
-})
+});
 
 const component = connect(mapStateToProps, mapDispatchToProps)(Container)
 
